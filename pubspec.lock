@@ -58,14 +58,14 @@ packages:
     source: hosted
     version: "1.2.0"
   firebase:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: firebase
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.0.2"
   firebase_core:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
@@ -86,7 +86,7 @@ packages:
     source: hosted
     version: "1.6.2"
   firebase_crashlytics:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: firebase_crashlytics
       url: "https://pub.dartlang.org"
@@ -192,7 +192,7 @@ packages:
     source: hosted
     version: "2.1.2"
   roggle:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: roggle
       url: "https://pub.dartlang.org"
