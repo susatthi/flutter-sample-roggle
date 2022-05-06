@@ -1,6 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_roggle/logger.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -35,6 +40,17 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
     });
+    if (_counter % 10 == 0) {
+      logger.e('error!!!!!!', Exception('aaaaaa'), StackTrace.current);
+    } else if (_counter % 3 == 0) {
+      logger.d(_counter);
+    } else if (_counter % 4 == 0) {
+      logger.i(_counter);
+    } else if (_counter % 5 == 0) {
+      logger.w(_counter);
+    } else {
+      logger.v(_counter);
+    }
   }
 
   @override
@@ -61,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "34564683848",
+    "project_id": "flutter-sample-roggle",
+    "storage_bucket": "flutter-sample-roggle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34564683848:android:0e8d3d8055f839850d407d",
+        "android_client_info": {
+          "package_name": "jp.susatthi.flutter_sample_roggle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34564683848-haevs41844li4u69nnmivanqe2jjed0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGMu4vbbXuW8S8z0fg9tMKSm6-kGGsYAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34564683848-haevs41844li4u69nnmivanqe2jjed0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
