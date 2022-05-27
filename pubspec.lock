@@ -173,9 +173,11 @@ packages:
   roggle:
     dependency: "direct main"
     description:
-      name: roggle
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: c865305744f5036a47e0fa812c83e2d0fedb92a4
+      url: "https://github.com/susatthi/roggle"
+    source: git
     version: "0.2.0"
   sky_engine:
     dependency: transitive

@@ -12,7 +12,8 @@ dependencies:
   cupertino_icons: ^1.0.4
   firebase_core: ^1.17.1
   firebase_crashlytics: ^2.8.1
-  roggle: ^0.2.0
+  roggle:
+    git: https://github.com/susatthi/roggle
 
 dev_dependencies:
   flutter_test:
