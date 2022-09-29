@@ -1,6 +1,7 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:roggle/roggle.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 /// フィルターに便利なロガー名
 const loggerName = '[APP]';
@@ -28,6 +29,7 @@ final logger = kReleaseMode
     : Roggle(
         printer: SinglePrettyPrinter(
           loggerName: loggerName,
+          colors: !UniversalPlatform.isIOS,
           stackTraceLevel: Level.warning, // warning 以上のときはスタックトレースを出力する
         ),
         output: _AssertionOutput(),
