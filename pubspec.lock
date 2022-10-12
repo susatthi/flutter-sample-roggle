@@ -188,11 +188,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/20-print-only-functions"
-      resolved-ref: "63ef466c38e25525e7bd1d5f40e606257e6bf163"
+      ref: main
+      resolved-ref: d80fba32b9d3341806565d5862638443d83571cc
       url: "https://github.com/susatthi/roggle"
     source: git
-    version: "0.2.1+1"
+    version: "0.3.0"
   sky_engine:
     dependency: transitive
     description: flutter
