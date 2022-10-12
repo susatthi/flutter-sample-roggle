@@ -3,21 +3,21 @@
   "configurations": [
     {
       "name": "app-debug",
-      "program": "lib/main.dart",
-      "request": "launch",
       "type": "dart",
+      "request": "launch",
+      "flutterMode": "debug",
+      "program": "lib/main.dart",
       "args": [
-        "--debug",
       ]
     },
     {
       "name": "app-release",
-      "program": "lib/main.dart",
-      "request": "launch",
       "type": "dart",
+      "request": "launch",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
       "args": [
-        "--release",
       ]
-    },
+    }
   ]
 }
