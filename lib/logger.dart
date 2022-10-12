@@ -11,16 +11,20 @@ final logger = kReleaseMode
     ? Roggle.crashlytics(
         printer: CrashlyticsPrinter(
           errorLevel: Level.error, // error 以上のログはエラーレポートを送信する
-          onError: (event) {
-            FirebaseCrashlytics.instance.recordError(
-              event.exception,
-              event.stack,
-              fatal: true, // true にするとエラーレポートを即時送信する
-            );
+          onError: (event) async {
+            if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
+              await FirebaseCrashlytics.instance.recordError(
+                event.exception,
+                event.stack,
+                fatal: true, // true にするとエラーレポートを即時送信する
+              );
+            }
           },
-          onLog: (event) {
-            // ここで記録したログは、firebase コンソールのログタブに表示される
-            FirebaseCrashlytics.instance.log(event.message);
+          onLog: (event) async {
+            if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
+              // ここで記録したログは、firebase コンソールのログタブに表示される
+              await FirebaseCrashlytics.instance.log(event.message);
+            }
           },
           loggerName: loggerName,
         ),
