@@ -1,91 +1,89 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample_roggle/firebase_options.dart';
-import 'package:flutter_sample_roggle/logger.dart';
-import 'package:universal_platform/universal_platform.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  if (UniversalPlatform.isAndroid ||
-      UniversalPlatform.isIOS ||
-      UniversalPlatform.isWeb) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  }
+import 'router.dart';
 
+void main() {
   runApp(const MyApp());
 }
 
+final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+final navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      scaffoldMessengerKey: scaffoldMessengerKey,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue),
+      routeInformationProvider: router.routeInformationProvider,
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+      builder: (context, child) => Builder(
+        builder: (context) {
+          return Navigator(
+            key: navigatorKey,
+            onPopPage: (route, dynamic _) => false,
+            pages: [
+              MaterialPage<Widget>(
+                child: child!,
+              ),
+            ],
+          );
+        },
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-    if (_counter % 10 == 0) {
-      logger.e('error!!!!!!', Exception('aaaaaa'), StackTrace.current);
-    } else if (_counter % 3 == 0) {
-      logger.d(_counter);
-    } else if (_counter % 4 == 0) {
-      logger.i(_counter);
-    } else if (_counter % 5 == 0) {
-      logger.w(_counter);
-    } else {
-      logger.v(_counter);
-    }
-  }
-
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('First Page'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        child: TextButton(
+          child: const Text('Go To Second Page'),
+          onPressed: () => const SecondRoute().go(context),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Page'),
       ),
+      body: Center(
+        child: TextButton(
+          child: const Text('Go To Third Page'),
+          onPressed: () => const ThirdRoute().go(context),
+        ),
+      ),
+    );
+  }
+}
+
+class ThirdScreen extends StatelessWidget {
+  const ThirdScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Third Page'),
+      ),
+      body: const Center(child: Text('Third Page')),
     );
   }
 }
