@@ -6,9 +6,6 @@ void main() {
   runApp(const MyApp());
 }
 
-final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
-final navigatorKey = GlobalKey<NavigatorState>();
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -16,25 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Demo',
-      scaffoldMessengerKey: scaffoldMessengerKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
-      builder: (context, child) => Builder(
-        builder: (context) {
-          return Navigator(
-            key: navigatorKey,
-            onPopPage: (route, dynamic _) => false,
-            pages: [
-              MaterialPage<Widget>(
-                child: child!,
-              ),
-            ],
-          );
-        },
-      ),
     );
   }
 }
