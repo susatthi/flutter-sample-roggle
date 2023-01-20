@@ -26,7 +26,7 @@ class FirstRoute extends GoRouteData {
   const FirstRoute();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, GoRouterState state) {
     return const FirstScreen();
   }
 }
@@ -35,7 +35,7 @@ class SecondRoute extends GoRouteData {
   const SecondRoute();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, GoRouterState state) {
     return const SecondScreen();
   }
 }
@@ -44,7 +44,7 @@ class ThirdRoute extends GoRouteData {
   const ThirdRoute();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, GoRouterState state) {
     return const ThirdScreen();
   }
 }
