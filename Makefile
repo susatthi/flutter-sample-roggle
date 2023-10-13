@@ -30,6 +30,10 @@ format-dry-exit-if-changed:
 build-runner:
 	$(FLUTTER) packages pub run build_runner build --delete-conflicting-outputs
 
+.PHONY: build-runner-watch
+build-runner-watch:
+	$(FLUTTER) packages pub run build_runner watch
+
 .PHONY: test
 test:
 	make analyze
